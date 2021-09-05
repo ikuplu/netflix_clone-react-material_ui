@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
 
   formControl: {
     margin: theme.spacing(2),
-    minWidth: 120,
     background: 'transparent',
     display: 'inline-block',
   },
@@ -38,6 +37,7 @@ export default function LangSelector() {
       <FormControl className={classes.formControl}>
         <LanguageIcon className={classes.langIcon} color="primary" />
         <NativeSelect
+          disableUnderline
           className={classes.nativeSelect}
           defaultValue="English"
           inputProps={{
