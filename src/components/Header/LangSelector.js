@@ -3,23 +3,34 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import LanguageIcon from '@material-ui/icons/Language';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    border: '1px solid grey',
-  },
-
   formControl: {
-    margin: theme.spacing(2),
     background: 'transparent',
     display: 'inline-block',
   },
 
+  nativeSelect: {
+    color: '#fff',
+    fontSize: '12px',
+    maxWidth: '80px',
+  },
+
   langIcon: {
-    marginRight: theme.spacing(0.5),
+    marginRight: theme.spacing(0.25),
     fontSize: '.75rem',
-    color: 'black',
     display: 'inline-block',
+    color: 'white',
+    transform: 'translateY(2px)',
+  },
+
+  icon: {
+    color: 'white',
+    margin: 0,
+    padding: 0,
+    fontSize: '1.5rem',
+    transform: 'translateX(10px)',
   },
 }));
 
@@ -33,21 +44,37 @@ export default function LangSelector() {
   };
 
   return (
-    <div className={classes.root}>
+    <Box
+      className={classes.root}
+      border={1}
+      borderColor="white"
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      flexWrap="noWrap"
+    >
       <FormControl className={classes.formControl}>
-        <LanguageIcon className={classes.langIcon} color="primary" />
+        <LanguageIcon className={classes.langIcon} />
         <NativeSelect
+          variant="outlined"
           disableUnderline
           className={classes.nativeSelect}
+          classes={{
+            icon: classes.icon,
+          }}
           defaultValue="English"
           inputProps={{
             lang: 'lang',
           }}
         >
-          <option value="Nederlands">Nederlands</option>
-          <option value="English">English</option>
+          <Box component="option" value="English">
+            English
+          </Box>
+          <Box component="option" value="Nederlands">
+            Nederlands
+          </Box>
         </NativeSelect>
       </FormControl>
-    </div>
+    </Box>
   );
 }
